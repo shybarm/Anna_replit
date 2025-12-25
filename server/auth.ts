@@ -33,7 +33,7 @@ export async function setupAuth(app: Express) {
       cookie: {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        maxAge: 7 * 24 * 60 * 60 * 1000, // 1 week
+        maxAge: 7 * 24 * 60 * 60 * 1000,
       },
     })
   );
@@ -139,13 +139,15 @@ export function registerAuthRoutes(app: Express) {
         details: error?.message || String(error)
       });
     }
+  });
 
   app.get("/api/auth/needs-setup", async (req, res) => {
     try {
       const existingUsers = await db.select().from(adminUsers).limit(1);
       return res.json({ needsSetup: existingUsers.length === 0 });
-    } catch (error) {
-      return res.json({ needsSetup: true });
+    } catch (error: any) {
+      console.error("Needs setup check error:", error);
+      return res.json({ needsSetup: true, error: error?.message });
     }
   });
 }
