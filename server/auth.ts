@@ -132,11 +132,13 @@ export function registerAuthRoutes(app: Express) {
         message: "Admin user created",
         id: newUser.id 
       });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Setup error:", error);
-      return res.status(500).json({ error: "Internal server error" });
+      return res.status(500).json({ 
+        error: "Internal server error", 
+        details: error?.message || String(error)
+      });
     }
-  });
 
   app.get("/api/auth/needs-setup", async (req, res) => {
     try {
