@@ -1,9 +1,11 @@
 import session from "express-session";
+import connectPgSimple from "connect-pg-simple";
 import type { Express, RequestHandler } from "express";
 import { db } from "./db";
 import { adminUsers } from "@shared/schema";
 import { eq } from "drizzle-orm";
 import crypto from "crypto";
+import { pool } from "./db";
 
 declare module "express-session" {
   interface SessionData {
@@ -25,8 +27,15 @@ export async function setupAuth(app: Express) {
   
   const sessionSecret = process.env.SESSION_SECRET;
   
+  const PgSession = connectPgSimple(session);
+  
   app.use(
     session({
+      store: new PgSession({
+        pool: pool,
+        tableName: "session",
+        createTableIfMissing: true,
+      }),
       secret: sessionSecret,
       resave: false,
       saveUninitialized: false,
