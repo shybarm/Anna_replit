@@ -1,0 +1,41 @@
+ want you to build a complete, production-ready website for Dr. Anna Brameli, an Allergy and Immunology Specialist.
+
+### Tech Stack & Frameworks
+* **Framework:** Next.js 14 (App Router) using TypeScript.
+* **Styling:** Tailwind CSS (for modern, minimalist design).
+* **Icons:** Lucide-react.
+* **Animations:** Framer Motion (subtle, professional animations).
+* **Language:** The site must be completely in Hebrew (RTL direction).
+
+### Core Design Requirements
+* **Aesthetic:** Medical, minimalistic, trustworthy, and high-end. Use a palette of soft teals, whites, and warm sand colors.
+* **Typography:** Use "Heebo" or "Assistant" from Google Fonts.
+* **Mobile-First:** The layout must be fully responsive.
+* **Navigation:** Sticky header with links: About, Services, Latest Updates, Q&A, Contact.
+
+### SEO Requirements (Critical)
+* Implement a `Metadata` configuration for proper SEO titles and descriptions in Hebrew.
+* Create a reusable `SchemaMarkup` component that injects JSON-LD for "Physician" and "MedicalWebPage".
+* Ensure semantic HTML tags (<article>, <section>, <h1>, etc.) are used correctly.
+
+### Page Structure & Features
+
+1.  **Hero Section:** High-quality background, photo of Dr. Anna (use a placeholder), and a clear value proposition in Hebrew.
+2.  **Service Cards:** Grid layout for "Food Allergy", "Asthma", "Skin Conditions", etc.
+3.  **"Latest Updates" Section (API Ready):**
+    * Create a UI component that displays allergy news cards.
+    * For now, use mock data (dummy JSON) representing articles.
+    * Write a clear comment/TODO in the code where I should connect the external medical API later.
+4.  **The AI Triage Bot (Widget):**
+    * Create a floating action button (FAB) in the bottom-right corner.
+    * When clicked, it opens a chat window.
+    * Build the UI for the chat interface (bubbles, input field).
+    * *Note:* I will implement the backend logic later, just build the frontend component and state management for the conversation UI.
+5.  **Booking/Contact:** A clean form and a section for clinic details (Map, Phone, Address).
+
+### Specific Content Context
+* **Doctor Name:** Dr. Anna Brameli (ד"ר אנה ברמלי).
+* **Key Phrase to Target:** "Pediatric and Adult Allergy Specialist".
+* **Tone:** Empathetic, professional, authoritative.
+
+Please scaffold the project, install dependencies, and build the initial pages.
